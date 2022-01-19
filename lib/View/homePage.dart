@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                             ),
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
+                              titleText: ("Recived"),
                               onTab: () {},
                             ),
                             SizedBox(
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                             ),
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
+                              titleText: ("Transfer"),
                               onTab: () {},
                             ),
                             SizedBox(
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                             ),
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
+                              titleText: ("PDF Edit"),
                               onTab: () {},
                             ),
                           ],
@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
+                              titleText: ("PDF to DOC"),
                               onTab: () {},
                             ),
                             SizedBox(
@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
                             ),
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
+                              titleText: ("Document\n Translation"),
                               onTab: () {},
                             ),
                             SizedBox(
@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
                             ),
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
+                              titleText: ("PPT Recorder"),
                               onTab: () {},
                             ),
                             SizedBox(
@@ -110,7 +110,7 @@ class HomePage extends StatelessWidget {
                             children: [
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
-                                titleText: ("File Manager"),
+                                titleText: ("Export images"),
                                 onTab: () {},
                               ),
                               SizedBox(
@@ -118,7 +118,7 @@ class HomePage extends StatelessWidget {
                               ),
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
-                                titleText: ("File Manager"),
+                                titleText: ("School Tools"),
                                 onTab: () {},
                               ),
                               SizedBox(
@@ -126,7 +126,7 @@ class HomePage extends StatelessWidget {
                               ),
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
-                                titleText: ("File Manager"),
+                                titleText: ("Export to PDF"),
                                 onTab: () {},
                               ),
                               SizedBox(
@@ -134,7 +134,7 @@ class HomePage extends StatelessWidget {
                               ),
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
-                                titleText: ("File Manager"),
+                                titleText: ("More"),
                                 onTab: () {},
                               ),
                             ],
@@ -156,15 +156,13 @@ class HomePage extends StatelessWidget {
                     bottom: TabBar(
                       tabs: [
                         Tab(
-                          icon: Icon(Icons.directions_bike),
+                          text: " Recent",
                         ),
                         Tab(
-                          icon: Icon(Icons.directions_bike),
+                          text: "Share",
                         ),
                         Tab(
-                          icon: Icon(
-                            Icons.directions_car,
-                          ),
+                          text: "Starred",
                         ),
                       ],
                     ),

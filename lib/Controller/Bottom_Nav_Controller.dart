@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wps_rp/View/file_page.dart';
 import 'package:wps_rp/View/homePage.dart';
 
 class BottomNavController extends GetxController {
@@ -15,12 +16,7 @@ class BottomNavController extends GetxController {
   /* --------------------------------- bottomAppBar --------------------------------- */
   List allPagesScreen = [
     HomePage(),
-    Container(
-      height: Get.height,
-      width: Get.width,
-      child: Text(" Page 2"),
-      color: Colors.redAccent,
-    ),
+    FilePage(),
     Container(
       height: Get.height,
       width: Get.width,
