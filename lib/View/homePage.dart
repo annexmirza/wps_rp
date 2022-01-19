@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
+                              titleText: ("Open Pdf"),
                               onTab: () async {
                                 await pdfFileController.OpenDocumentReader();
                                 Get.to(PdfViewScreen());
