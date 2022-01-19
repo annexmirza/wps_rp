@@ -13,7 +13,7 @@ class FilePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: Get.height,
+          // height: Get.height,
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -24,47 +24,40 @@ class FilePage extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-
-              Column(),
-
-              Container(
-                color: Colors.amber,
-                height: 500,
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      CustomFileCard(),
+                      Spacer(),
+                      CustomFileCard(),
+                    ],
+                  ),
+                ],
               ),
-              // Row(
-              //   children: [
-              //     CustomFileCard(),
-              //     Spacer(),
-              //     CustomFileCard(),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 40,
-              // ),
-              // Row(
-              //   children: [
-              //     CustomFileCard(),
-              //     Spacer(),
-              //     CustomFileCard(),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 40,
-              // ),
-              // Container(
-              //   color: Colors.amber,
-              //   height: 500,
-              // ),
-              // // Row(
-              // //   children: [
-              // //     CustomFileCard(),
-              // //     Spacer(),
-              // //     CustomFileCard(),
-              // //   ],
-              // // ),
-              // SizedBox(
-              //   height: 40,
-              // )
+              SizedBox(
+                height: 40,
+              ),
+              Row(
+                children: [
+                  CustomFileCard(),
+                  Spacer(),
+                  CustomFileCard(),
+                ],
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Row(
+                children: [
+                  CustomFileCard(),
+                  Spacer(),
+                  CustomFileCard(),
+                ],
+              ),
+              SizedBox(
+                height: 40,
+              )
             ],
           ),
         ),
