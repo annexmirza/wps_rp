@@ -43,11 +43,14 @@ class BottomNavBarPage extends StatelessWidget {
                       icon: Icons.home_filled,
                     ),
                     GButton(
-                      icon: Icons.access_alarms_sharp,
+                      icon: Icons.file_copy,
                     ),
-                    GButton(icon: Icons.person),
+                    GButton(icon: Icons.pan_tool_sharp),
                     GButton(
                       icon: Icons.youtube_searched_for_outlined,
+                    ),
+                    GButton(
+                      icon: Icons.person,
                     )
                   ])),
         ),
