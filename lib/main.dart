@@ -31,7 +31,5 @@ class MyApp extends StatelessWidget {
 }
 
 Widget landingPage() {
-  return ImageToPdfPage();
-  //QRScannerPage();
-  // BottomNavBarPage();
+  return BottomNavBarPage();
 }

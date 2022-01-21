@@ -7,10 +7,27 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:get/get.dart';
 
+import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
+
 class ImageToPdfController extends GetxController {
   File? imageFile;
   final picker = ImagePicker();
   final pdf = pw.Document();
+
+  bool showPdf = false;
+
+  File? pdfFile;
+  PDFDocument? pdfDocument;
+
+  makingPdfDocument() async {
+    pdfDocument = await PDFDocument.fromFile(pdfFile!);
+    update();
+  }
+
+  showingPdfDocument() {
+    showPdf = true;
+    update();
+  }
 
   gettingImageFromGallery() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
@@ -43,8 +60,11 @@ class ImageToPdfController extends GetxController {
     try {
       final dir = await getApplicationDocumentsDirectory();
       final file = File('${dir.path}/filename.pdf');
+      pdfFile = file;
+      print(pdfFile!.path);
+      update();
       await file.writeAsBytes(await pdf.save());
-      return Get.defaultDialog(title: 'pdf saved as filename.pdf');
+      //  return Get.defaultDialog(title: 'pdf saved as filename.pdf');
     } catch (e) {
       return Get.defaultDialog(title: 'pdf not saved error: $e');
     }
