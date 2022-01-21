@@ -32,6 +32,9 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 25.h,
                         ),
+                        ////first row ////////
+                        ///
+                        ///
                         Row(
                           children: [
                             CustomButtonWithText(
@@ -68,6 +71,10 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 25.h,
                         ),
+
+                        ///Second row /////////
+                        ///
+                        ///
                         Row(
                           children: [
                             CustomButtonWithText(
