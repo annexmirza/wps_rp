@@ -79,7 +79,7 @@ class ImageToPdfPage extends StatelessWidget {
                                 ),
                           InkWell(
                             onTap: () {
-                              //image from camera
+                              imageToPdfController.gettingImageFromCamera();
                             },
                             child: Icon(
                               Icons.camera_alt,

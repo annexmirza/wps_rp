@@ -31,15 +31,23 @@ class ImageToPdfController extends GetxController {
 
   gettingImageFromGallery() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    if (picker != null) {
-      imageFile = File(pickedFile!.path);
+    if (pickedFile != null) {
+      imageFile = File(pickedFile.path);
       update();
     } else {
       print('Unable to select image from gallery');
     }
   }
 
-  gettingImageFromCamera() {}
+  gettingImageFromCamera() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      imageFile = File(pickedFile.path);
+      update();
+    } else {
+      print('Unable to select image from camera');
+    }
+  }
 
   creatingPdf() async {
     final image = pw.MemoryImage(imageFile!.readAsBytesSync());
