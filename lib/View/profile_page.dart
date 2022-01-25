@@ -6,6 +6,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Text("ME"),
+      ),
       body: Container(
         height: Get.height,
         child: Column(
@@ -18,9 +21,14 @@ class ProfilePage extends StatelessWidget {
                   Row(
                     children: [
                       CircleAvatar(
-                        radius: 50.r,
+                        radius: 40.r,
+                        backgroundColor: Colors.red,
+                      ),
+                      SizedBox(
+                        width: 10.w,
                       ),
                       Text("Shahid Mirza")
+                      
                     ],
                   )
                 ],

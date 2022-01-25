@@ -13,6 +13,7 @@ class ToolsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: Text("Tool"),
+        
       ),
       body: SingleChildScrollView(
         child: Container(

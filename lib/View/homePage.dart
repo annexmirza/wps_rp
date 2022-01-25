@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:wps_rp/View/more_tool_Page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -135,7 +136,9 @@ class HomePage extends StatelessWidget {
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
                                 titleText: ("More"),
-                                onTab: () {},
+                                onTab: () {
+                                  Get.to(() => MorePage());
+                                },
                               ),
                             ],
                           ),

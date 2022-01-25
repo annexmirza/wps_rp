@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wps_rp/View/file_page.dart';
 import 'package:wps_rp/View/homePage.dart';
+import 'package:wps_rp/View/profile_page.dart';
 import 'package:wps_rp/View/tools_page.dart';
 
 class BottomNavController extends GetxController {
@@ -25,12 +26,7 @@ class BottomNavController extends GetxController {
       child: Text(" Page 4"),
       color: Colors.blueGrey,
     ),
-    Container(
-      height: Get.height,
-      width: Get.width,
-      child: Text(" Page 4"),
-      color: Colors.blueGrey,
-    )
+    ProfilePage(),
     // HomePageScreen(),
     // SearchPage(),
     // AboutPage(),
