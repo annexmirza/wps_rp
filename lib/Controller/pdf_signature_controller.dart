@@ -84,13 +84,6 @@ class PdfSignatureController extends GetxController {
     final pageSize = page.getClientSize();
 
     try {
-      ///add signature
-      ///
-      ///
-      ///
-      // page.graphics.drawImage(imageBitmap,
-      //     Rect.fromLTWH(pageSize.width - 250, pageSize.height - 150, 200, 100));
-
       page.graphics.drawImage(
           imageBitmap,
           Rect.fromLTWH((screenCoordinateX! * 2.393) - 100,
@@ -100,10 +93,6 @@ class PdfSignatureController extends GetxController {
       print(
           'pdf page height is ${pageSize.height} and width is ${pageSize.width}');
 
-      // page.graphics.drawString(
-      //     'Hello World!', PdfStandardFont(PdfFontFamily.helvetica, 12),
-      //     brush: PdfSolidBrush(PdfColor(0, 0, 0)),
-      //     bounds: Rect.fromLTWH(0, 0, 150, 20));
       update();
     } catch (e) {
       print('error in signature adding : $e');
