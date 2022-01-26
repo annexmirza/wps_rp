@@ -19,7 +19,7 @@ class QRScannerPage extends StatelessWidget {
             body: Column(
               children: <Widget>[
                 Expanded(
-                  flex: 5,
+                  flex: 8,
                   child: QRView(
                       key: qrKey,
                       onQRViewCreated: (QRViewController controller) {
@@ -27,12 +27,21 @@ class QRScannerPage extends StatelessWidget {
                       }),
                 ),
                 Expanded(
+                    flex: 1,
+                    child: Center(
+                      child: (qrScannerController.result != null)
+                          ? Text(
+                              'Barcode Type: ${describeEnum(qrScannerController.result!.format)}   Data: ${qrScannerController.result!.code}')
+                          : Text('Scan a code'),
+                    )),
+                Expanded(
                   flex: 1,
-                  child: (qrScannerController.result != null)
-                      ? Text(
-                          'Barcode Type: ${describeEnum(qrScannerController.result!.format)}   Data: ${qrScannerController.result!.code}')
-                      : Text('Scan a code'),
-                  //
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text('Exit Scanner'),
+                  ),
                 ),
               ],
             ),

@@ -54,7 +54,9 @@ class ImageToPdfPage extends StatelessWidget {
                                 fit: BoxFit.cover,
                               )
                             : Container(
-                                child: Center(child: Text('Add an image')),
+                                child: Center(
+                                  child: Text('Click below to Add an image'),
+                                ),
                               ),
                       ),
                       Row(
@@ -65,27 +67,52 @@ class ImageToPdfPage extends StatelessWidget {
                                   onTap: () {
                                     imageToPdfController.showingPdfDocument();
                                   },
-                                  child: Text(' Pdf Document Ready.Show Now'))
-                              : InkWell(
-                                  onTap: () async {
-                                    await imageToPdfController
-                                        .gettingImageFromGallery();
-                                    //image from gallery
-                                  },
-                                  child: Icon(
-                                    Icons.image,
-                                    size: 40.sp,
+                                  child: Container(
+                                    height: 60.h,
+                                    decoration: BoxDecoration(
+                                      color: Colors.blueGrey[900],
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10.r),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        ' Pdf Document Ready. \n     Show Now',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
                                   ),
+                                )
+                              : Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    InkWell(
+                                      onTap: () async {
+                                        await imageToPdfController
+                                            .gettingImageFromGallery();
+                                        //image from gallery
+                                      },
+                                      child: Icon(
+                                        Icons.image,
+                                        size: 40.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 60.w,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        imageToPdfController
+                                            .gettingImageFromCamera();
+                                      },
+                                      child: Icon(
+                                        Icons.camera_alt,
+                                        size: 40.sp,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                          InkWell(
-                            onTap: () {
-                              imageToPdfController.gettingImageFromCamera();
-                            },
-                            child: Icon(
-                              Icons.camera_alt,
-                              size: 40.sp,
-                            ),
-                          ),
                         ],
                       )
                     ],
