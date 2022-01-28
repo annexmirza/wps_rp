@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:wps_rp/Controller/pdf_controller.dart';
+import 'package:wps_rp/Controller/pdf_to_doc.dart';
 import 'package:wps_rp/View/more_tool_Page.dart';
+import 'package:wps_rp/View/pdf_view_screen.dart';
+
+import 'notes_page.dart';
 
 class HomePage extends StatelessWidget {
+  PdfFileController pdfFileController = Get.put(PdfFileController());
+  PdfToDocController pdfToDocController = Get.put(PdfToDocController());
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -22,96 +30,38 @@ class HomePage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             height: Get.height,
-            child: Column(
-              children: [
-                Container(
-                  color: Colors.red,
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        Row(
-                          children: [
-                            CustomButtonWithText(
-                              buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
-                              onTab: () {},
-                            ),
-                            SizedBox(
-                              width: 5.h,
-                            ),
-                            CustomButtonWithText(
-                              buttonIcon: Icons.directions_bike,
-                              titleText: ("Recived"),
-                              onTab: () {},
-                            ),
-                            SizedBox(
-                              width: 5.h,
-                            ),
-                            CustomButtonWithText(
-                              buttonIcon: Icons.directions_bike,
-                              titleText: ("Transfer"),
-                              onTab: () {},
-                            ),
-                            SizedBox(
-                              width: 5.h,
-                            ),
-                            CustomButtonWithText(
-                              buttonIcon: Icons.directions_bike,
-                              titleText: ("PDF Edit"),
-                              onTab: () {},
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        Row(
-                          children: [
-                            CustomButtonWithText(
-                              buttonIcon: Icons.directions_bike,
-                              titleText: ("PDF to DOC"),
-                              onTab: () {},
-                            ),
-                            SizedBox(
-                              width: 5.h,
-                            ),
-                            CustomButtonWithText(
-                              buttonIcon: Icons.directions_bike,
-                              titleText: ("Document\n Translation"),
-                              onTab: () {},
-                            ),
-                            SizedBox(
-                              width: 5.h,
-                            ),
-                            CustomButtonWithText(
-                              buttonIcon: Icons.directions_bike,
-                              titleText: ("PPT Recorder"),
-                              onTab: () {},
-                            ),
-                            SizedBox(
-                              width: 5.h,
-                            ),
-                            CustomButtonWithText(
-                              buttonIcon: Icons.directions_bike,
-                              titleText: ("File Manager"),
-                              onTab: () {},
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        Container(
-                          width: Get.width,
-                          child: Row(
+            child:
+                GetBuilder<PdfToDocController>(builder: (pdfToDocController) {
+              return Column(
+                children: [
+                  Container(
+                    color: Colors.red,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 25.h,
+                          ),
+                          ////first row ////////
+                          ///
+                          ///
+                          Row(
                             children: [
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
-                                titleText: ("Export images"),
+                                titleText: ("Open Pdf"),
+                                onTab: () async {
+                                  await pdfFileController.OpenDocumentReader();
+                                  Get.to(PdfViewScreen());
+                                },
+                              ),
+                              SizedBox(
+                                width: 5.h,
+                              ),
+                              CustomButtonWithText(
+                                buttonIcon: Icons.directions_bike,
+                                titleText: ("Recived"),
                                 onTab: () {},
                               ),
                               SizedBox(
@@ -119,7 +69,7 @@ class HomePage extends StatelessWidget {
                               ),
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
-                                titleText: ("School Tools"),
+                                titleText: ("Transfer"),
                                 onTab: () {},
                               ),
                               SizedBox(
@@ -127,85 +77,161 @@ class HomePage extends StatelessWidget {
                               ),
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
-                                titleText: ("Export to PDF"),
-                                onTab: () {},
-                              ),
-                              SizedBox(
-                                width: 5.h,
-                              ),
-                              CustomButtonWithText(
-                                buttonIcon: Icons.directions_bike,
-                                titleText: ("More"),
+                                titleText: ("Quick Notes"),
                                 onTab: () {
-                                  Get.to(() => MorePage());
+                                  Get.to(() => NotesPage());
                                 },
                               ),
                             ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 25.h,
-                ),
-                SizedBox(
-                  height: 50,
-                  child: AppBar(
-                    bottom: TabBar(
-                      tabs: [
-                        Tab(
-                          text: " Recent",
-                        ),
-                        Tab(
-                          text: "Share",
-                        ),
-                        Tab(
-                          text: "Starred",
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: TabBarView(
-                    children: [
-                      // first tab bar view widget
-                      Container(
-                        color: Colors.red,
-                        child: Center(
-                          child: Text(
-                            'Bike',
+                          SizedBox(
+                            height: 25.h,
                           ),
-                        ),
-                      ),
-                      Container(
-                        color: Colors.red,
-                        child: Center(
-                          child: Text(
-                            'Bike',
-                          ),
-                        ),
-                      ),
 
-                      // second tab bar viiew widget
-                      Container(
-                        color: Colors.pink,
-                        child: Center(
-                          child: Text(
-                            'Car',
+                          ///Second row /////////
+                          ///
+                          ///
+                          Row(
+                            children: [
+                              CustomButtonWithText(
+                                buttonIcon: Icons.directions_bike,
+                                titleText: ("PDF to DOC"),
+                                onTab: () {
+                                  pdfToDocController.pickPDFText();
+                                  print('doc' + pdfToDocController.text);
+                                },
+                              ),
+                              SizedBox(
+                                width: 5.h,
+                              ),
+                              CustomButtonWithText(
+                                buttonIcon: Icons.directions_bike,
+                                titleText: ("Document\n Translation"),
+                                onTab: () {},
+                              ),
+                              SizedBox(
+                                width: 5.h,
+                              ),
+                              CustomButtonWithText(
+                                buttonIcon: Icons.directions_bike,
+                                titleText: ("PPT Recorder"),
+                                onTab: () {},
+                              ),
+                              SizedBox(
+                                width: 5.h,
+                              ),
+                              CustomButtonWithText(
+                                buttonIcon: Icons.directions_bike,
+                                titleText: ("File Manager"),
+                                onTab: () {},
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 25.h,
+                          ),
+                          Container(
+                            width: Get.width,
+                            child: Row(
+                              children: [
+                                CustomButtonWithText(
+                                  buttonIcon: Icons.directions_bike,
+                                  titleText: ("Export images"),
+                                  onTab: () {},
+                                ),
+                                SizedBox(
+                                  width: 5.h,
+                                ),
+                                CustomButtonWithText(
+                                  buttonIcon: Icons.directions_bike,
+                                  titleText: ("School Tools"),
+                                  onTab: () {},
+                                ),
+                                SizedBox(
+                                  width: 5.h,
+                                ),
+                                CustomButtonWithText(
+                                  buttonIcon: Icons.directions_bike,
+                                  titleText: ("Export to PDF"),
+                                  onTab: () {},
+                                ),
+                                SizedBox(
+                                  width: 5.h,
+                                ),
+                                CustomButtonWithText(
+                                  buttonIcon: Icons.directions_bike,
+                                  titleText: ("More"),
+                                  onTab: () {
+                                    Get.to(() => MorePage());
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25.h,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 25.h,
+                  ),
+                  SizedBox(
+                    height: 50,
+                    child: AppBar(
+                      bottom: TabBar(
+                        tabs: [
+                          Tab(
+                            text: " Recent",
+                          ),
+                          Tab(
+                            text: "Share",
+                          ),
+                          Tab(
+                            text: "Starred",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        // first tab bar view widget
+                        Container(
+                          color: Colors.red,
+                          child: Center(
+                            child: Text(
+                              'Bike',
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        Container(
+                          color: Colors.red,
+                          child: Center(
+                            child: Text(
+                              'Bike',
+                            ),
+                          ),
+                        ),
+
+                        // second tab bar viiew widget
+                        Container(
+                          color: Colors.pink,
+                          child: Center(
+                            child: Text(
+                              'Car',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              );
+            }),
           ),
         ),
       ),
