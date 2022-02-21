@@ -12,7 +12,7 @@ class BottomNavBarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<BottomNavController>(builder: (bottomNavController) {
       return Scaffold(
-        backgroundColor: Colors.cyanAccent,
+        backgroundColor: Colors.greenAccent,
         body: Container(
           child: bottomNavController
               .allPagesScreen[bottomNavController.currentIndex],

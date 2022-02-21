@@ -28,5 +28,8 @@ class MyApp extends StatelessWidget {
 }
 
 Widget landingPage() {
-  return BottomNavBarPage();
+  return
+      // NotesPageScreen();
+
+      BottomNavBarPage();
 }
