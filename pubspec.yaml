@@ -63,6 +63,8 @@ dependencies:
   pdf_text: ^0.5.0
   syncfusion_flutter_pdf: ^19.4.43-beta
   syncfusion_flutter_signaturepad: ^19.4.43
+  webview_flutter: ^3.0.0
+ 
 dev_dependencies:
   flutter_test:
     sdk: flutter

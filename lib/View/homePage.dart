@@ -4,8 +4,11 @@ import 'package:get/get.dart';
 import 'package:wps_rp/Controller/pdf_controller.dart';
 import 'package:wps_rp/Controller/pdf_to_doc.dart';
 import 'package:wps_rp/View/more_tool_Page.dart';
+import 'package:wps_rp/View/pdf_signature_page.dart';
 import 'package:wps_rp/View/pdf_view_screen.dart';
+import 'package:wps_rp/View/qr_scanner.dart';
 
+import 'image_to_pdf_page.dart';
 import 'notes_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -127,33 +130,38 @@ class HomePage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 25.h,
-                          ),
                           Container(
                             width: Get.width,
                             child: Row(
                               children: [
                                 CustomButtonWithText(
                                   buttonIcon: Icons.directions_bike,
-                                  titleText: ("Export images"),
-                                  onTab: () {},
+                                  titleText: ("QR Scanner"),
+                                  onTab: () {
+                                    Get.to(() => QRScannerPage());
+                                  },
                                 ),
                                 SizedBox(
                                   width: 5.h,
                                 ),
                                 CustomButtonWithText(
                                   buttonIcon: Icons.directions_bike,
-                                  titleText: ("School Tools"),
-                                  onTab: () {},
+                                  titleText: ("Image to Pdf"),
+                                  onTab: () {
+                                    Get.to(
+                                      () => ImageToPdfPage(),
+                                    );
+                                  },
                                 ),
                                 SizedBox(
                                   width: 5.h,
                                 ),
                                 CustomButtonWithText(
                                   buttonIcon: Icons.directions_bike,
-                                  titleText: ("Export to PDF"),
-                                  onTab: () {},
+                                  titleText: ("Sign Pdf"),
+                                  onTab: () {
+                                    Get.to(() => PdfSignaturePage());
+                                  },
                                 ),
                                 SizedBox(
                                   width: 5.h,
@@ -161,15 +169,10 @@ class HomePage extends StatelessWidget {
                                 CustomButtonWithText(
                                   buttonIcon: Icons.directions_bike,
                                   titleText: ("More"),
-                                  onTab: () {
-                                    Get.to(() => MorePage());
-                                  },
+                                  onTab: () {},
                                 ),
                               ],
                             ),
-                          ),
-                          SizedBox(
-                            height: 25.h,
                           ),
                         ],
                       ),
