@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wps_rp/Controller/pdf_controller.dart';
+import 'package:wps_rp/Controller/resume_controller.dart';
+import 'package:wps_rp/View/abc.dart';
 import 'package:wps_rp/View/pdf_view_screen.dart';
+import 'package:wps_rp/View/text_editor.dart';
 
 class HomePage extends StatelessWidget {
   PdfFileController pdfFileController = Get.put(PdfFileController());
+  ResumeController resumeController=Get.put(ResumeController());
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -51,7 +55,9 @@ class HomePage extends StatelessWidget {
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
                               titleText: ("Recived"),
-                              onTab: () {},
+                              onTab: () {
+                                Get.to(CreatePdfWidget());
+                              },
                             ),
                             SizedBox(
                               width: 5.h,
@@ -59,15 +65,19 @@ class HomePage extends StatelessWidget {
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
                               titleText: ("Transfer"),
-                              onTab: () {},
+                              onTab: () {
+                               resumeController.createPdf();
+                              },
                             ),
                             SizedBox(
                               width: 5.h,
                             ),
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
-                              titleText: ("PDF Edit"),
-                              onTab: () {},
+                              titleText: ("Compress File"),
+                              onTab: () {
+                                pdfFileController.compressFile();
+                              },
                             ),
                           ],
                         ),
@@ -84,6 +94,7 @@ class HomePage extends StatelessWidget {
                             SizedBox(
                               width: 5.h,
                             ),
+                          
                             CustomButtonWithText(
                               buttonIcon: Icons.directions_bike,
                               titleText: ("Document\n Translation"),
