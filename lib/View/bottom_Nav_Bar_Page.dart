@@ -14,45 +14,45 @@ class BottomNavBarPage extends StatelessWidget {
       return Scaffold(
         backgroundColor: Colors.cyanAccent,
         body: Container(
-            child: bottomNavController
-                .allPagesScreen[bottomNavController.currentIndex]),
+          child: bottomNavController
+              .allPagesScreen[bottomNavController.currentIndex],
+        ),
 
         //  allPageScreen[currentPage]
 
         bottomNavigationBar: Padding(
           padding: EdgeInsets.only(left: 0.w, right: 0.h, bottom: 0.h),
           child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(0.r),
-                // color: Colors.white,
-              ),
-              child: GNav(
-                  padding: EdgeInsets.only(
-                      left: 24.w, right: 15.w, top: 18.h, bottom: 18.h),
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  tabBackgroundColor: Color(0xffFFC41F),
-                  onTabChange: (index) {
-                    bottomNavController.currentIndex = index;
-                    bottomNavController.updatePage(index);
-                  },
-                  selectedIndex: bottomNavController.currentIndex,
-                  // iconSize: 25,
-                  tabs: [
-                    GButton(
-                      icon: Icons.home_filled,
-                    ),
-                    GButton(
-                      icon: Icons.file_copy,
-                    ),
-                    GButton(icon: Icons.pan_tool_sharp),
-                    GButton(
-                      icon: Icons.youtube_searched_for_outlined,
-                    ),
-                    GButton(
-                      icon: Icons.person,
-                    )
-                  ])),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(0.r),
+              // color: Colors.white,
+            ),
+            child: GNav(
+              padding: EdgeInsets.only(
+                  left: 24.w, right: 15.w, top: 18.h, bottom: 18.h),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              tabBackgroundColor: Color(0xffFFC41F),
+              onTabChange: (index) {
+                bottomNavController.currentIndex = index;
+                bottomNavController.updatePage(index);
+              },
+              selectedIndex: bottomNavController.currentIndex,
+              // iconSize: 25,
+              tabs: [
+                GButton(
+                  icon: Icons.home_filled,
+                ),
+                GButton(
+                  icon: Icons.access_alarms_sharp,
+                ),
+                GButton(icon: Icons.person),
+                GButton(
+                  icon: Icons.youtube_searched_for_outlined,
+                )
+              ],
+            ),
+          ),
         ),
       );
     });
