@@ -3,6 +3,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wps_rp/View/bottom_Nav_Bar_Page.dart';
+import 'package:wps_rp/View/conversion_screen.dart';
+import 'package:wps_rp/View/invoice_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,8 +30,8 @@ class MyApp extends StatelessWidget {
 }
 
 Widget landingPage() {
-  return
+  return ConversionScreen();
       // NotesPageScreen();
 
-      BottomNavBarPage();
+      // HtmlEditorExample(title: 'asd',);
 }
