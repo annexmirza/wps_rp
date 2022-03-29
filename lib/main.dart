@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wps_rp/View/bottom_Nav_Bar_Page.dart';
 import 'package:wps_rp/View/conversion_screen.dart';
+import 'package:wps_rp/View/homePage.dart';
 import 'package:wps_rp/View/invoice_page.dart';
 
 void main() async {
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
 }
 
 Widget landingPage() {
-  return ConversionScreen();
+  return HomePage();
       // NotesPageScreen();
 
       // HtmlEditorExample(title: 'asd',);

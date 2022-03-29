@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:wps_rp/Controller/pdf_controller.dart';
 import 'package:wps_rp/Controller/qr_scanner_controller.dart';
 import 'package:wps_rp/Controller/resume_controller.dart';
+import 'package:wps_rp/View/conversion_screen.dart';
 import 'package:wps_rp/View/image_to_pdf_page.dart';
 import 'package:wps_rp/Controller/pdf_to_doc.dart';
 import 'package:wps_rp/View/more_tool_Page.dart';
@@ -117,8 +118,10 @@ class HomePage extends StatelessWidget {
                               ),
                               CustomButtonWithText(
                                 buttonIcon: Icons.directions_bike,
-                                titleText: ("Document\n Translation"),
-                                onTab: () {},
+                                titleText: ("Document\n Conversion"),
+                                onTab: () {
+                                  Get.to(()=>ConversionScreen());
+                                },
                               ),
                               SizedBox(
                                 width: 5.h,

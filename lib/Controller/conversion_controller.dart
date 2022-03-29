@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:external_path/external_path.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'dart:io';
@@ -15,6 +16,7 @@ import 'package:internet_file/internet_file.dart';
 
 class ConversionController extends GetxController{
   convertDocxToJpg() async{
+    try{
      String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
         ExternalPath.DIRECTORY_DOWNLOADS);
 String url='https://v2.convertapi.com/convert/docx/to/jpg?Secret=LN72qmLNad8Jwa8J';
@@ -66,10 +68,16 @@ final Uint8List bytes = await InternetFile.get(
 var file1=await File('${_localPath}/${abc['Files'][0]['FileName']}').writeAsBytes(bytes);
 print(file1);
   }
-  
+    Get.snackbar('Success', 'File converted successfully',colorText: Colors.white,backgroundColor: Colors.green);
+  }
+ 
+
+catch(e){
+  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
+}
 }
   convertDocxToPdf() async{
-    
+    try{
      String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
         ExternalPath.DIRECTORY_DOWNLOADS);
 String url='https://v2.convertapi.com/convert/docx/to/pdf?Secret=LN72qmLNad8Jwa8J';
@@ -123,9 +131,17 @@ final Uint8List bytes = await InternetFile.get(
 var file1=await File('${_localPath}/${abc['Files'][0]['FileName']}').writeAsBytes(bytes);
 print(file1);
   }
+    Get.snackbar('Success', 'File converted successfully',colorText: Colors.white,backgroundColor: Colors.green);
+  }
+ 
+
+catch(e){
+  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
+}
   
 }
 convertPdfToJpg() async{
+  try{
      String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
         ExternalPath.DIRECTORY_DOWNLOADS);
 String url='https://v2.convertapi.com/convert/pdf/to/jpg?Secret=LN72qmLNad8Jwa8J';
@@ -180,7 +196,16 @@ final Uint8List bytes = await InternetFile.get(
 var file1=await File('${_localPath}/${abc['Files'][0]['FileName']}').writeAsBytes(bytes);
 print(file1);
   }
-  
+  Get.snackbar('Success', 'File converted successfully',colorText: Colors.white,backgroundColor: Colors.green);
+  }
+ 
+
+catch(e){
+  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
 }
+}
+
+
+
 }
 // Configure words api client
