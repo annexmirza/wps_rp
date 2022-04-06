@@ -73,7 +73,7 @@ print(file1);
  
 
 catch(e){
-  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
+Get.snackbar('Error', e.toString(),colorText: Colors.white,backgroundColor: Colors.red);
 }
 }
   convertDocxToPdf() async{
@@ -136,7 +136,7 @@ print(file1);
  
 
 catch(e){
-  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
+  Get.snackbar('Error', e.toString(),colorText: Colors.white,backgroundColor: Colors.red);
 }
   
 }
@@ -201,7 +201,7 @@ print(file1);
  
 
 catch(e){
-  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
+  Get.snackbar('Error', e.toString(),colorText: Colors.white,backgroundColor: Colors.red);
 }
 }
 

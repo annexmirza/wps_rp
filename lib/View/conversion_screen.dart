@@ -4,44 +4,53 @@ import 'package:get/get.dart';
 import 'package:wps_rp/Controller/conversion_controller.dart';
 import 'package:wps_rp/View/homePage.dart';
 
+// ignore: must_be_immutable
 class ConversionScreen extends StatelessWidget {
-   ConversionScreen({ Key? key }) : super(key: key);
+  //  ConversionScreen({ Key? key }) : super(key: key);
 ConversionController conversionController=Get.put(ConversionController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: Get.width,
           height: 50.sp,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomButtonWithText(
+                    InkWell(
+              onTap: () {
+                conversionController.convertDocxToJpg();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.blue,
+                ),
+                width: 200.w,
+                child: Text('PDF to JPG',style: TextStyle(color: Colors.white),),
                 
-                titleText: 'Docx TO JPG',
-                onTab: () {
-                  conversionController.convertDocxToJpg();
-                  
-                },
               ),
+            ),
               SizedBox(width: 10.w,),
-               CustomButtonWithText(
-                titleText: 'Docx TO PDF',
-                onTab: () {
-                  conversionController.convertDocxToPdf();
-                  
-                },
-              ),
+        
                  SizedBox(width: 10.w,),
-               CustomButtonWithText(
-                titleText: 'PDFTO JPG',
-                onTab: () {
-                  conversionController.convertPdfToJpg();
-                  
-                },
+            InkWell(
+              onTap: () {
+                conversionController.convertPdfToJpg();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.blue,
+                ),
+                width: 200.w,
+                child: Text('PDF to JPG',style: TextStyle(color: Colors.white),),
+                
               ),
+            ),
             ],
+            
           ),
         ),
       ),

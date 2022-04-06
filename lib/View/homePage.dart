@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:wps_rp/Controller/conversion_controller.dart';
 import 'package:wps_rp/Controller/pdf_controller.dart';
 import 'package:wps_rp/Controller/qr_scanner_controller.dart';
 import 'package:wps_rp/Controller/resume_controller.dart';
@@ -20,7 +21,7 @@ class HomePage extends StatelessWidget {
   PdfFileController pdfFileController = Get.put(PdfFileController());
   ResumeController resumeController=Get.put(ResumeController());
   PdfToDocController pdfToDocController = Get.put(PdfToDocController());
-
+ConversionController conversionController=Get.put(ConversionController());
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -120,7 +121,7 @@ class HomePage extends StatelessWidget {
                                 buttonIcon: Icons.directions_bike,
                                 titleText: ("Document\n Conversion"),
                                 onTab: () {
-                                  Get.to(()=>ConversionScreen());
+                                  conversionController.convertDocxToJpg();
                                 },
                               ),
                               SizedBox(
