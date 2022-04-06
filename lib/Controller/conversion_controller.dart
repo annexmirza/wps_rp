@@ -14,198 +14,161 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_file/internet_file.dart';
 
-class ConversionController extends GetxController{
-  convertDocxToJpg() async{
-    try{
-     String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
-        ExternalPath.DIRECTORY_DOWNLOADS);
-String url='https://v2.convertapi.com/convert/docx/to/jpg?Secret=LN72qmLNad8Jwa8J';
-var filePickerResult = await FilePicker.platform.pickFiles(
-  type: FileType.custom,
-  allowMultiple: false,
-allowedExtensions: ['docx'],
-);
-if(filePickerResult!=null){
-File file=File(filePickerResult.files.single.path!);
-String filePath=file.path;
-String fileName=file.path.split('/').last;
-Uint8List? fileInBytes=file.readAsBytesSync();
-String? docFileData=base64Encode(fileInBytes);
-final body = {
+class ConversionController extends GetxController {
+  convertDocxToJpg() async {
+    try {
+      String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
+          ExternalPath.DIRECTORY_DOWNLOADS);
+      String url =
+          'https://v2.convertapi.com/convert/docx/to/jpg?Secret=LN72qmLNad8Jwa8J';
+      var filePickerResult = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowMultiple: false,
+        allowedExtensions: ['docx'],
+      );
+      if (filePickerResult != null) {
+        File file = File(filePickerResult.files.single.path!);
+        String filePath = file.path;
+        String fileName = file.path.split('/').last;
+        Uint8List? fileInBytes = file.readAsBytesSync();
+        String? docFileData = base64Encode(fileInBytes);
+        final body = {
+          "Parameters": [
+            {
+              "Name": "File",
+              "FileValue": {"Name": fileName, "Data": docFileData}
+            },
+            {"Name": "StoreFile", "Value": true}
+          ]
+        };
 
-       "Parameters": [
-         {
-           "Name": "File",
-           "FileValue": {
-             "Name": fileName,
-             "Data": docFileData
-           }
-         },
-         {
-           "Name": "StoreFile",
-           "Value": true
-         }
-       ]
+        http.Response response = await http.post(Uri.parse(url),
+            body: jsonEncode(body),
+            headers: {"Content-Type": "application/json"});
+        print(response.body);
+        var abc = jsonDecode(response.body);
+        String fileUrl = abc['Files'][0]['Url'];
 
-    };
-
-http.Response response = await http.post(
- Uri.parse(url), 
- body: jsonEncode(body), 
- headers: {"Content-Type": "application/json"}
-);
-print(response.body);
-var abc=jsonDecode(response.body);
-String fileUrl=abc['Files'][0]['Url'];
-
-
-final Uint8List bytes = await InternetFile.get(
-    fileUrl,
-    process: (percentage) {
-        print('downloadPercentage: $percentage');
-    },
-);
-var file1=await File('${_localPath}/${abc['Files'][0]['FileName']}').writeAsBytes(bytes);
-print(file1);
+        final Uint8List bytes = await InternetFile.get(
+          fileUrl,
+          process: (percentage) {
+            print('downloadPercentage: $percentage');
+          },
+        );
+        var file1 = await File('${_localPath}/${abc['Files'][0]['FileName']}')
+            .writeAsBytes(bytes);
+        print(file1);
+      }
+      Get.snackbar('Success', 'File converted successfully',
+          colorText: Colors.white, backgroundColor: Colors.green);
+    } catch (e) {
+      Get.snackbar('Errro', e.toString(),
+          colorText: Colors.white, backgroundColor: Colors.red);
+    }
   }
-    Get.snackbar('Success', 'File converted successfully',colorText: Colors.white,backgroundColor: Colors.green);
+
+  convertDocxToPdf() async {
+    try {
+      String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
+          ExternalPath.DIRECTORY_DOWNLOADS);
+      String url =
+          'https://v2.convertapi.com/convert/docx/to/pdf?Secret=LN72qmLNad8Jwa8J';
+      var filePickerResult = await FilePicker.platform.pickFiles(
+        allowMultiple: false,
+        type: FileType.custom,
+        allowedExtensions: ['docx'],
+      );
+      if (filePickerResult != null) {
+        File file = File(filePickerResult.files.single.path!);
+        String filePath = file.path;
+        String fileName = file.path.split('/').last;
+        Uint8List? fileInBytes = file.readAsBytesSync();
+        String? docFileData = base64Encode(fileInBytes);
+        final body = {
+          "Parameters": [
+            {
+              "Name": "File",
+              "FileValue": {"Name": fileName, "Data": docFileData}
+            },
+            {"Name": "StoreFile", "Value": true}
+          ]
+        };
+
+        http.Response response = await http.post(Uri.parse(url),
+            body: jsonEncode(body),
+            headers: {"Content-Type": "application/json"});
+        print(response.body);
+        var abc = jsonDecode(response.body);
+        String fileUrl = abc['Files'][0]['Url'];
+
+        final Uint8List bytes = await InternetFile.get(
+          fileUrl,
+          process: (percentage) {
+            print('downloadPercentage: $percentage');
+          },
+        );
+        var file1 = await File('${_localPath}/${abc['Files'][0]['FileName']}')
+            .writeAsBytes(bytes);
+        print(file1);
+      }
+      Get.snackbar('Success', 'File converted successfully',
+          colorText: Colors.white, backgroundColor: Colors.green);
+    } catch (e) {
+      Get.snackbar('Errro', e.toString(),
+          colorText: Colors.white, backgroundColor: Colors.red);
+    }
   }
- 
 
-catch(e){
-  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
-}
-}
-  convertDocxToPdf() async{
-    try{
-     String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
-        ExternalPath.DIRECTORY_DOWNLOADS);
-String url='https://v2.convertapi.com/convert/docx/to/pdf?Secret=LN72qmLNad8Jwa8J';
-var filePickerResult = await FilePicker.platform.pickFiles(
-  allowMultiple: false,
-  type: FileType.custom,
-  allowedExtensions: ['docx'],
-  
+  convertPdfToJpg() async {
+    try {
+      String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
+          ExternalPath.DIRECTORY_DOWNLOADS);
+      String url =
+          'https://v2.convertapi.com/convert/pdf/to/jpg?Secret=LN72qmLNad8Jwa8J';
+      var filePickerResult = await FilePicker.platform.pickFiles(
+        allowMultiple: false,
+        type: FileType.custom,
+        allowedExtensions: ['pdf'],
+      );
+      if (filePickerResult != null) {
+        File file = File(filePickerResult.files.single.path!);
+        String filePath = file.path;
+        String fileName = file.path.split('/').last;
+        Uint8List? fileInBytes = file.readAsBytesSync();
+        String? docFileData = base64Encode(fileInBytes);
+        final body = {
+          "Parameters": [
+            {
+              "Name": "File",
+              "FileValue": {"Name": fileName, "Data": docFileData}
+            },
+            {"Name": "StoreFile", "Value": true}
+          ]
+        };
 
-);
-if(filePickerResult!=null){
-File file=File(filePickerResult.files.single.path!);
-String filePath=file.path;
-String fileName=file.path.split('/').last;
-Uint8List? fileInBytes=file.readAsBytesSync();
-String? docFileData=base64Encode(fileInBytes);
-final body = {
+        http.Response response = await http.post(Uri.parse(url),
+            body: jsonEncode(body),
+            headers: {"Content-Type": "application/json"});
+        print(response.body);
+        var abc = jsonDecode(response.body);
+        String fileUrl = abc['Files'][0]['Url'];
 
-       "Parameters": [
-         {
-           "Name": "File",
-           "FileValue": {
-             "Name": fileName,
-             "Data": docFileData
-           }
-         },
-         {
-           "Name": "StoreFile",
-           "Value": true
-         }
-       ]
-
-    };
-
-http.Response response = await http.post(
- Uri.parse(url), 
- body: jsonEncode(body), 
- headers: {"Content-Type": "application/json"}
-);
-print(response.body);
-var abc=jsonDecode(response.body);
-String fileUrl=abc['Files'][0]['Url'];
-
-
-final Uint8List bytes = await InternetFile.get(
-    fileUrl,
-    process: (percentage) {
-        print('downloadPercentage: $percentage');
-    },
-);
-var file1=await File('${_localPath}/${abc['Files'][0]['FileName']}').writeAsBytes(bytes);
-print(file1);
+        final Uint8List bytes = await InternetFile.get(
+          fileUrl,
+          process: (percentage) {
+            print('downloadPercentage: $percentage');
+          },
+        );
+        var file1 = await File('${_localPath}/${abc['Files'][0]['FileName']}')
+            .writeAsBytes(bytes);
+        print(file1);
+      }
+      Get.snackbar('Success', 'File converted successfully',
+          colorText: Colors.white, backgroundColor: Colors.green);
+    } catch (e) {
+      Get.snackbar('Errro', e.toString(),
+          colorText: Colors.white, backgroundColor: Colors.red);
+    }
   }
-    Get.snackbar('Success', 'File converted successfully',colorText: Colors.white,backgroundColor: Colors.green);
-  }
- 
-
-catch(e){
-  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
-}
-  
-}
-convertPdfToJpg() async{
-  try{
-     String _localPath = await ExternalPath.getExternalStoragePublicDirectory(
-        ExternalPath.DIRECTORY_DOWNLOADS);
-String url='https://v2.convertapi.com/convert/pdf/to/jpg?Secret=LN72qmLNad8Jwa8J';
-var filePickerResult = await FilePicker.platform.pickFiles(
-  allowMultiple: false,
-  type: FileType.custom,
-  allowedExtensions: ['pdf'],
-  
-
-);
-if(filePickerResult!=null){
-File file=File(filePickerResult.files.single.path!);
-String filePath=file.path;
-String fileName=file.path.split('/').last;
-Uint8List? fileInBytes=file.readAsBytesSync();
-String? docFileData=base64Encode(fileInBytes);
-final body = {
-
-       "Parameters": [
-         {
-           "Name": "File",
-           "FileValue": {
-             "Name": fileName,
-             "Data": docFileData
-           }
-         },
-         {
-           "Name": "StoreFile",
-           "Value": true
-         }
-       ]
-
-    };
-
-http.Response response = await http.post(
- Uri.parse(url), 
- body: jsonEncode(body), 
- headers: {"Content-Type": "application/json"}
-);
-print(response.body);
-var abc=jsonDecode(response.body);
-String fileUrl=abc['Files'][0]['Url'];
-
-
-final Uint8List bytes = await InternetFile.get(
-    fileUrl,
-    process: (percentage) {
-        print('downloadPercentage: $percentage');
-    },
-    
-);
-var file1=await File('${_localPath}/${abc['Files'][0]['FileName']}').writeAsBytes(bytes);
-print(file1);
-  }
-  Get.snackbar('Success', 'File converted successfully',colorText: Colors.white,backgroundColor: Colors.green);
-  }
- 
-
-catch(e){
-  Get.snackbar('Errro', 'something went wrong',colorText: Colors.white,backgroundColor: Colors.red);
-}
-}
-
-
-
 }
 // Configure words api client
