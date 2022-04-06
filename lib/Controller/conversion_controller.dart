@@ -64,6 +64,7 @@ class ConversionController extends GetxController {
     } catch (e) {
       Get.snackbar('Errro', e.toString(),
           colorText: Colors.white, backgroundColor: Colors.red);
+      print(e.toString());
     }
   }
 
@@ -116,6 +117,7 @@ class ConversionController extends GetxController {
     } catch (e) {
       Get.snackbar('Errro', e.toString(),
           colorText: Colors.white, backgroundColor: Colors.red);
+      print(e.toString());
     }
   }
 
@@ -168,6 +170,8 @@ class ConversionController extends GetxController {
     } catch (e) {
       Get.snackbar('Errro', e.toString(),
           colorText: Colors.white, backgroundColor: Colors.red);
+
+      print(e.toString());
     }
   }
 }

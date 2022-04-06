@@ -7,7 +7,9 @@
    android:requestLegacyExternalStorage="true"
         android:label="wps_rp"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+
+        >
         
         
 
