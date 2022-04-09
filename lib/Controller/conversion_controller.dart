@@ -65,6 +65,9 @@ class ConversionController extends GetxController {
       Get.snackbar('Errro', e.toString(),
           colorText: Colors.white, backgroundColor: Colors.red);
       print(e.toString());
+    } catch (e) {
+      Get.snackbar('Error', e.toString(),
+          colorText: Colors.white, backgroundColor: Colors.red);
     }
   }
 
@@ -115,9 +118,8 @@ class ConversionController extends GetxController {
       Get.snackbar('Success', 'File converted successfully',
           colorText: Colors.white, backgroundColor: Colors.green);
     } catch (e) {
-      Get.snackbar('Errro', e.toString(),
+      Get.snackbar('Error', e.toString(),
           colorText: Colors.white, backgroundColor: Colors.red);
-      print(e.toString());
     }
   }
 
@@ -168,10 +170,8 @@ class ConversionController extends GetxController {
       Get.snackbar('Success', 'File converted successfully',
           colorText: Colors.white, backgroundColor: Colors.green);
     } catch (e) {
-      Get.snackbar('Errro', e.toString(),
+      Get.snackbar('Error', e.toString(),
           colorText: Colors.white, backgroundColor: Colors.red);
-
-      print(e.toString());
     }
   }
 }
