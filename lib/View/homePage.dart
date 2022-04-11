@@ -43,9 +43,9 @@ class HomePage extends StatelessWidget {
 
                 TextButton(
                   onPressed: () {
-                    conversionController.convertDocxToJpg();
+                    pdfFileController.compressFile();
                   },
-                  child: Text("Nouvelle Texte"),
+                  child: Text("Compress Pdf"),
                 ),
 
                 TextButton(
